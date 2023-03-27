@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid mt-3 position-relative">
     <ToastMessages></ToastMessages>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 

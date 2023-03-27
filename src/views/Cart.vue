@@ -18,7 +18,11 @@ import productsStore from '@/stores/productsStore';
             <tr v-for="item in sortProducts" :key="item.id">
               <td style="width: 200px">
                 <div
-                  style="height: 100px; background-size: cover; background-position: center"
+                  style="
+                    height: 100px;
+                    background-size: cover;
+                    background-position: center;
+                  "
                   :style="{ backgroundImage: `url(${item.imageUrl})` }"
                 ></div>
               </td>
@@ -73,7 +77,9 @@ import productsStore from '@/stores/productsStore';
                   </td>
                   <td>
                     {{ item.product.title }}
-                    <div class="text-success" v-if="item.coupon">已套用優惠券</div>
+                    <div class="text-success" v-if="item.coupon">
+                      已套用優惠券
+                    </div>
                   </td>
                   <td>
                     <div class="input-group input-group-sm">
@@ -84,11 +90,15 @@ import productsStore from '@/stores/productsStore';
                         :disabled="cartLoadingItem === item.id"
                         @change="updateCart(item)"
                       />
-                      <div class="input-group-text">/ {{ item.product.unit }}</div>
+                      <div class="input-group-text">
+                        / {{ item.product.unit }}
+                      </div>
                     </div>
                   </td>
                   <td class="text-end">
-                    <small v-if="cart.final_total !== cart.total" class="text-success"
+                    <small
+                      v-if="cart.final_total !== cart.total"
+                      class="text-success"
                       >折扣價：</small
                     >
                     {{ $filters.currency(item.final_total) }}
@@ -103,7 +113,9 @@ import productsStore from '@/stores/productsStore';
               </tr>
               <tr v-if="cart.final_total !== cart.total">
                 <td colspan="3" class="text-end text-success">折扣價</td>
-                <td class="text-end text-success">{{ $filters.currency(cart.final_total) }}</td>
+                <td class="text-end text-success">
+                  {{ $filters.currency(cart.final_total) }}
+                </td>
               </tr>
             </tfoot>
           </table>
@@ -135,7 +147,12 @@ export default {
   },
   methods: {
     ...mapActions(productsStore, ['getProducts']),
-    ...mapActions(cartStore, ['addToCart', 'getCart', 'updateCart', 'removeCartItem']),
+    ...mapActions(cartStore, [
+      'addToCart',
+      'getCart',
+      'updateCart',
+      'removeCartItem',
+    ]),
   },
   created() {
     this.getProducts();

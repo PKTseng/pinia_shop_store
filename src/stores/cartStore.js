@@ -44,7 +44,10 @@ export default defineStore('cartStore', {
       axios.put(url, { data: cart }).then((response) => {
         console.log(response);
         this.getCart();
-        status.pushMessage({ title: '更新購物車資訊', content: response.data.message });
+        status.pushMessage({
+          title: '更新購物車資訊',
+          content: response.data.message,
+        });
         status.cartLoadingItem = '';
         status.isLoading = false;
       });
@@ -55,7 +58,10 @@ export default defineStore('cartStore', {
       status.isLoading = true;
       axios.delete(url).then((response) => {
         console.log(response);
-        status.pushMessage({ title: '移除購物車品項', content: response.data.message });
+        status.pushMessage({
+          title: '移除購物車品項',
+          content: response.data.message,
+        });
         status.cartLoadingItem = '';
         this.getCart();
         status.isLoading = false;
